@@ -1,6 +1,7 @@
 import React from "react";
+import MealItemForm from "./MealItemForm";
 
-const MealItem = ({ name, description, price }) => {
+const MealItem = ({ id, name, description, price }) => {
   return (
     <div className="flex justify-between items-center border-b border-[#ccc] py-4">
       <div>
@@ -10,10 +11,8 @@ const MealItem = ({ name, description, price }) => {
           ${price.toFixed(2)}
         </div>
       </div>
-      <div className="flex items-center">
-        <button className="bg-[#8a2b06] text-white px-8 py-2 rounded-full hover:bg-[#641e03] transition-colors">
-          + Add
-        </button>
+      <div>
+        <MealItemForm id={id} />
       </div>
     </div>
   );
