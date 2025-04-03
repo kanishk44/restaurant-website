@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 const MealItemForm = (props) => {
+  const [amount, setAmount] = useState(1);
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+    props.onAddToCart(+amount);
+  };
+
   return (
-    <form className="text-right">
+    <form className="text-right" onSubmit={submitHandler}>
       <div className="flex items-center mb-2">
         <label htmlFor={`amount_${props.id}`} className="font-bold mr-4">
           Amount
@@ -13,7 +20,8 @@ const MealItemForm = (props) => {
           min="1"
           max="5"
           step="1"
-          defaultValue="1"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
           className="w-12 rounded-md border border-gray-300 pl-2 py-1"
         />
       </div>
